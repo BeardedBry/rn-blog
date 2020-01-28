@@ -1,7 +1,8 @@
+import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import IndexScreen from './src/screens/IndexScreen';
-import React from 'react';
+import { BlogProvider } from './src/context/BlogContext';
 
 
 const navigator = createStackNavigator(
@@ -16,7 +17,10 @@ const navigator = createStackNavigator(
 );
 
 const App = createAppContainer(navigator);
+// App is passed in as the child of BlogProvider
 
 export default () => {
-  return <App />
+  return <BlogProvider>
+      <App /> 
+    </BlogProvider>
 }
