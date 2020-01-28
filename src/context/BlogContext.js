@@ -5,8 +5,15 @@ const BlogContext = React.createContext();
 // children is a react feature, not context specific.
 
 export const BlogProvider = ({ children }) => {
+
+    const blogPosts = [
+        { title: 'Blog Post#1' },
+        { title: 'Blog Post#2' },
+        { title: 'Blog Post#3' }
+    ];
+
     return (
-    <BlogContext.Provider value={20}>
+    <BlogContext.Provider value={blogPosts}>
         {children}
     </BlogContext.Provider>
     )
