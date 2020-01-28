@@ -5,7 +5,11 @@ const BlogContext = React.createContext();
 // children is a react feature, not context specific.
 
 export const BlogProvider = ({ children }) => {
-    return <BlogContext.Provider>
+    return (
+    <BlogContext.Provider value={20}>
         {children}
-    </BlogContext.Provider>;
+    </BlogContext.Provider>
+    )
 };
+
+export default BlogContext;
