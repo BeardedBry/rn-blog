@@ -20,7 +20,9 @@ const App = createAppContainer(navigator);
 // App is passed in as the child of BlogProvider
 
 export default () => {
-  return <BlogProvider>
+  return (
+    <BlogProvider>
       <App /> 
     </BlogProvider>
+    );
 }
