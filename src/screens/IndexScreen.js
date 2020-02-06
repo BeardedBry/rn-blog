@@ -8,7 +8,6 @@ const IndexScreen = ( { navigation } ) => {
 
     return (
     <View>
-        <Text>Index Screen</Text>
         <Button title="Add Post" onPress={addBlogPost} />
         <FlatList 
             data={state}
@@ -29,8 +28,20 @@ const IndexScreen = ( { navigation } ) => {
             }}
         />
     </View>
-    )
-}
+    );
+};
+
+// Header bar
+IndexScreen.navigationOptions = ({ navigation }) => {
+    return {
+        headerRight: () => (
+            <TouchableOpacity onPress={()=> navigation.navigate('Create')}>
+                <Text style={{fontSize: 38, paddingRight: 15}}>&#x2b;</Text>
+            </TouchableOpacity>
+        ),
+    };
+};
+
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
