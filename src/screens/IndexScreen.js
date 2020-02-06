@@ -5,12 +5,14 @@ import { Context } from '../context/BlogContext';
 
 const IndexScreen = () => {
 
-    const { state, dispatch } = useContext(Context);
+    const { state, boundActions } = useContext(Context);
+
+    //console.log(actions);
 
     return (
     <View>
         <Text>Index Screen</Text>
-        <Button title="Add Post" onPress={addBlogPost} />
+        <Button title="Add Post" onPress={boundActions.addBlogPost} />
         <FlatList 
             data={state}
             keyExtractor={(state)=>state.title}

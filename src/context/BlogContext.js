@@ -1,8 +1,6 @@
-import React from 'react';
 import createDataContext from './createDataContext';
 
 //const BlogContext = React.createContext();
-
 
 const blogReducer = (state, action) => {
     
@@ -14,8 +12,10 @@ const blogReducer = (state, action) => {
     }
 };
 
-const addBlogPost = () => {
+const addBlogPost = (dispatch) => {
+    return () => {
         dispatch({type: 'add_blogpost'});
+    };
 };
 
 export const { Context, Provider } = createDataContext(
