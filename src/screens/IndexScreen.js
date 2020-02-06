@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import {View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native';
 import { Context as BlogContext } from '../context/BlogContext';
 
-const IndexScreen = () => {
+const IndexScreen = ( { navigation } ) => {
+    
     const { state, addBlogPost, deleteBlogPost } = useContext(BlogContext);
 
     return (
@@ -14,14 +15,16 @@ const IndexScreen = () => {
             keyExtractor={(state)=>state.id.toString()}
             renderItem={({item}) => {
                 return (
-                    <View style={styles.row}>
-                        <Text style={styles.title}>{item.title} - {item.id}</Text>
-                        <TouchableOpacity onPress={()=>deleteBlogPost(item.id)}>
-                            <Text style={styles.icon}>
-                                &#9747;
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+                    <TouchableOpacity onPress={ () => navigation.navigate('Show', {id: item.id})}>
+                        <View style={styles.row}>
+                            <Text style={styles.title}>{item.title} - {item.id}</Text>
+                            <TouchableOpacity onPress={()=>deleteBlogPost(item.id)}>
+                                <Text style={styles.icon}>
+                                    &#9747;
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </TouchableOpacity>
                 )
             }}
         />
