@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Context } from '../context/BlogContext';
 
-const ShowScreen = ({ navigation }) => {
 
+const ShowScreen = ({ navigation }) => {
+    
     const { state } = useContext(Context);
-  
     const blogPost = state.find((blogPost) => blogPost.id === navigation.getParam('id')); 
 
 
@@ -16,6 +16,16 @@ const ShowScreen = ({ navigation }) => {
         </View>
     );
 };
+
+ShowScreen.navigationOptions = ({ navigation }) => {
+    return {
+        headerRight: () => (
+            <TouchableOpacity onPress={()=> navigation.navigate('Edit', {id: navigation.getParam('id')})}>
+                <Text style={{fontSize: 30, paddingRight: 15}}>&#9998;</Text>
+            </TouchableOpacity>
+        )
+    }
+}
 
 const styles = StyleSheet.create({});
 
