@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     icon: {
+        padding: 5,
         fontSize: 18,
     }
 })
