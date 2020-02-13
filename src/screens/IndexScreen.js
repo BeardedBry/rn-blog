@@ -1,10 +1,24 @@
-import React, { useContext } from 'react';
-import {View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Context as BlogContext } from '../context/BlogContext';
 
 const IndexScreen = ( { navigation } ) => {
     
-    const { state, deleteBlogPost } = useContext(BlogContext);
+    useEffect(()=>{
+        getBlogPosts();
+        
+        const listener = navigation.addListener('didFocus', () => {
+            getBlogPosts();
+        });
+
+        // return happens when componentUnmounts (the screen is completely gone.)
+        return () => {
+            listener.remove();
+        }
+    }, [])
+
+    const { state, deleteBlogPost, getBlogPosts } = useContext(BlogContext);
+
 
     return (
     <View>
